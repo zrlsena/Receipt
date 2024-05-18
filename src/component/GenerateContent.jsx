@@ -28,7 +28,7 @@ const GenerateContent = () => {
       const genAI = new GoogleGenerativeAI(API_KEY);
       const model = genAI.getGenerativeModel({ model: 'gemini-pro-vision' });
 
-      const prompt = 'What\'s different between these pictures?';
+      const prompt = 'only total sales Amount, date and receipt no ?';
 
       const imageParts = await Promise.all(
         selectedImages.map(async (file) => {
@@ -54,9 +54,9 @@ const GenerateContent = () => {
   };
 
   return (
-    <div>
+    <div className='receipt'>
       <input type="file" accept="image/*" multiple onChange={handleImageChange} />
-      <button onClick={handleSubmit}>Analyze Images</button>
+      <button className='button' onClick={handleSubmit}>Analyze Images</button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {generatedText && <p>{generatedText}</p>}
     </div>
